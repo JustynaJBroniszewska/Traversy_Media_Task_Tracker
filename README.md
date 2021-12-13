@@ -1,4 +1,4 @@
-# This is a part of React course made by (https://www.traversymedia.com/) [Brad Traversy]
+# This is a part of React course made by (https://www.traversymedia.com/) [(Brad Traversy)]
 
 ## How to start?     
 
