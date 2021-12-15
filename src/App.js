@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import Task from "./components/Tasks";
+import AddTask from "./components/AddTask";
 
 const App = () => {
 
+  const [ showAddTask, setShowAddTask] = useState(false)
   const [tasks, setTasks] = useState([
     {
     id:0,
@@ -25,10 +27,17 @@ const App = () => {
     },
   ])
 
+  const handleAddTask = (task) => {
+
+    const id = Math.floor(Math.random()*10000+1)
+
+    const newTask = {id, ...task}
+    setTasks([...tasks, newTask])
+  }
+
   const handleDeleteTask =(id) => {
     setTasks(tasks.filter( task => task.id !== id))
   }
-
 
   const handleMarkAsDone = (id) => {
     setTasks(tasks.map( task => task.id === id ? {...task, reminder: !task.reminder} : task ))
@@ -36,7 +45,14 @@ const App = () => {
 
   return (
     <div className="container">
-      <Header />
+      <Header 
+        handleShowAddTask={()=>setShowAddTask(!showAddTask)} 
+        showAddTask={showAddTask}
+      />
+      { 
+        showAddTask && 
+        <AddTask handleAddTask={handleAddTask}/> 
+      }
       { 
         tasks.length === 0 ? "No tasks to show" :
         <Task 

@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 
-const Button = ({handleAddBtnClick, text}) => {
+const Button = ({handleShowAddTask, showAddTask }) => {
+
     return (
-        <button className='btn' onClick={handleAddBtnClick}>{text}</button>
+        <button className='btn' onClick={handleShowAddTask}>{showAddTask ? 'Hide form' : 'Show form'}</button>
     )
 }
 
